@@ -9,7 +9,7 @@ public enum Menus {
 
     public final List<String> list;
 
-    private Menus(List<String> list) {
+    Menus(List<String> list) {
         this.list = list;
     }
 
@@ -28,9 +28,4 @@ public enum Menus {
         return res.toString();
     }
 
-    public static String[] createAccount() {
-//        Scanner input = "";
-
-        return new String[]{"Username", "Wachtwoord"};
-    }
 }

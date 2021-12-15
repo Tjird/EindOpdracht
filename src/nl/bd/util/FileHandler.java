@@ -78,9 +78,12 @@ public class FileHandler {
 
         while(reader.hasNextLine()) {
             String rawData = reader.nextLine();
-            String[] data = rawData.split("/\\|\\\\");
 
             if (rawData.startsWith("$pass / ")) continue;
+
+            String[] data = rawData.split("/\\|\\\\");
+
+            if (data.length < 3) continue;
 
             list.add(new Site(data[0], data[1]));
         }
