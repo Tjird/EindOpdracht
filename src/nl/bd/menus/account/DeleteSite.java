@@ -13,7 +13,7 @@ public class DeleteSite {
             System.out.println("Er zijn geen sites om te verwijderen.");
             return;
         }
-        
+
         boolean stop = false;
         Scanner scanner = new Scanner(System.in);
         int count = 0; // Aantal pogingen
