@@ -4,25 +4,18 @@ import nl.bd.site.Site;
 import nl.bd.util.FileHandler;
 import nl.bd.util.Password;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class User {
 
     private final String username;
     private Password password;
-    private List<Site> sites = new ArrayList<>();
-    private FileHandler fileHandler;
-
-    public User(String username, String password) {
-        this.username = username;
-        this.password = new Password(password, false);
-    }
+    private List<Site> sites;
 
     public User(String username, Password password) {
         this.username = username;
         this.password = password;
-        this.fileHandler = new FileHandler(username);
+        FileHandler fileHandler = new FileHandler(username);
         this.sites = fileHandler.readSites();
     }
 
@@ -44,7 +37,7 @@ public class User {
 
     // Validatie van de gebruikersnaam met een reguliere expressie
     public static boolean checkUsername(String username) {
-        return username.matches("^\\w{3,16}$");
+        return !username.matches("^\\w{3,16}$");
     }
 
 }

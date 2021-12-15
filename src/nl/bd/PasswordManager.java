@@ -7,7 +7,6 @@ import nl.bd.menus.signin.Main;
 import nl.bd.menus.Menus;
 import nl.bd.site.Site;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -35,7 +34,7 @@ public class PasswordManager {
 
                         break;
                     case 1:
-                        // Show all sites from current user
+                        // Laat alle sites zien van een gebruiker
                         createTable();
 
                         break;
@@ -65,6 +64,7 @@ public class PasswordManager {
         scanner.close();
     }
 
+    // Print een x aantal lege regels
     public static void clearScreen() {
         for (int i = 0; i < 10; i++) {
             System.out.println("\n");
@@ -87,6 +87,7 @@ public class PasswordManager {
     private static void createTable() {
         List<Site> sites = currentUser.getSites();
 
+        // Als er geen sites zijn, geef een melding
         if (sites.size() == 0) {
             System.out.println("Je hebt nog geen sites aangemaakt.\n");
             return;
@@ -99,6 +100,7 @@ public class PasswordManager {
         int maxSizeUsername = 30;
         int maxSizePassword = 32;
 
+        // Loop door alle sites heen en bereken de grootte van de kolommen
         for (Site site : sites) {
             if (site.getName().length() > countSizeSite) {
                 countSizeSite = Math.min(site.getName().length(), maxSizeSite);
@@ -123,6 +125,7 @@ public class PasswordManager {
         );
         System.out.println(seperator);
 
+        // Loop door alle sites heen en print deze in de tabel
         for (int i = 0; i < sites.size(); i++) {
             Site site = sites.get(i);
 

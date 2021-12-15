@@ -9,6 +9,11 @@ import java.util.Scanner;
 public class DeleteSite {
 
     public DeleteSite() {
+        if (PasswordManager.getCurrentUser().getSites().size() == 0) {
+            System.out.println("Er zijn geen sites om te verwijderen.");
+            return;
+        }
+        
         boolean stop = false;
         Scanner scanner = new Scanner(System.in);
         int count = 0; // Aantal pogingen

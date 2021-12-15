@@ -46,7 +46,7 @@ public class Login {
             this.username = scanner.nextLine();
 
             // Valideer de gebruikersnaam doormiddel van een reguliere expressie
-            if (!User.checkUsername(username)) {
+            if (User.checkUsername(username)) {
                 System.out.println("Gebruikersnaam is niet geldig...");
                 continue;
             }
