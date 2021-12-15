@@ -72,23 +72,34 @@ public class FileHandler {
     }
 
     //Read the file and return a list of sites
-    private List<Site> readListFromFile() {
+    public List<Site> readSites() {
         List<Site> list = new ArrayList<>();
-        Scanner reader = new Scanner(getPath());
+        BufferedReader reader = null;
 
-        while(reader.hasNextLine()) {
-            String rawData = reader.nextLine();
+        try {
+            reader = new BufferedReader(new FileReader(getPath()));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.startsWith("$pass / ")) continue;
 
-            if (rawData.startsWith("$pass / ")) continue;
+                String[] data = line.split(" \\/\\/ ");
 
-            String[] data = rawData.split("/\\|\\\\");
+                if (data.length < 3) continue;
+                if (!validateBase64(data[2])) continue;
 
-            if (data.length < 3) continue;
-
-            list.add(new Site(data[0], data[1]));
+                list.add(new Site(data[0], data[1], data[2]));
+            }
+        } catch (IOException e) {
+            System.out.println("Er ging iets mis bij het lezen van je account.");
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    System.out.println("Er ging iets mis bij het lezen van je account.");
+                }
+            }
         }
-
-        reader.close();
 
         return list;
     }

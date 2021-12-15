@@ -1,8 +1,10 @@
 package nl.bd;
 
 import nl.bd.site.Site;
+import nl.bd.util.FileHandler;
 import nl.bd.util.Password;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +13,7 @@ public class User {
     private final String username;
     private Password password;
     private List<Site> sites = new ArrayList<>();
+    private FileHandler fileHandler;
 
     public User(String username, String password) {
         this.username = username;
@@ -20,12 +23,12 @@ public class User {
     public User(String username, Password password) {
         this.username = username;
         this.password = password;
+        this.fileHandler = new FileHandler(username);
+        this.sites = fileHandler.readSites();
     }
 
-    private List<Site> getSites() {
-        List<Site> sites = new ArrayList<>();
-
-        return sites;
+    public List<Site> getSites() {
+        return this.sites;
     }
 
     public String getUsername() {
