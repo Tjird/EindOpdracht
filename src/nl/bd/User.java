@@ -4,7 +4,6 @@ import nl.bd.site.Site;
 import nl.bd.util.FileHandler;
 import nl.bd.util.Password;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 

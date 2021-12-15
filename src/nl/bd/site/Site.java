@@ -14,6 +14,12 @@ public class Site {
         this.password = new Password(password, true);
     }
 
+    public Site(String site, String username,Password password) {
+        this.name = site;
+        this.username = username;
+        this.password = password;
+    }
+
     public String getName() {
         return name;
     }

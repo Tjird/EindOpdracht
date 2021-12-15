@@ -8,6 +8,7 @@ public enum Menus {
     OPTIONS(new ArrayList<>(Arrays.asList("Laat al je sites zien", "Voeg een site toe", "Verwijder een site", "Wijzig je wachtwoord")));
 
     public final List<String> list;
+    private static final List<String> yesList = new ArrayList<>(List.of("ja", "j", "y", "yes"));
 
     Menus(List<String> list) {
         this.list = list;
@@ -26,6 +27,10 @@ public enum Menus {
         res.append("-=-=-=-=-=-=-=-=-=-=-=-=-=-").append("\n").append("Keuze: ");
 
         return res.toString();
+    }
+
+    public static List<String> getYesList() {
+        return yesList;
     }
 
 }

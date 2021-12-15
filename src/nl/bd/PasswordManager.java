@@ -1,10 +1,13 @@
 package nl.bd;
 
-import nl.bd.menus.PasswordChange;
-import nl.bd.menus.Main;
+import nl.bd.menus.account.CreateSite;
+import nl.bd.menus.account.DeleteSite;
+import nl.bd.menus.account.PasswordChange;
+import nl.bd.menus.signin.Main;
 import nl.bd.menus.Menus;
 import nl.bd.site.Site;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -36,7 +39,18 @@ public class PasswordManager {
                         createTable();
 
                         break;
+                    case 2:
+                        // Open het menu om een site aan te maken
+                        new CreateSite();
+
+                        break;
+                    case 3:
+                        // Open het menu om een site te verwijderen
+                        new DeleteSite();
+
+                        break;
                     case 4:
+                        // Open het menu om je wachtwoord te wijzigen
                         new PasswordChange();
 
                         break;
@@ -72,6 +86,12 @@ public class PasswordManager {
     // Toon alle sites van huidige gebruiker in tabel
     private static void createTable() {
         List<Site> sites = currentUser.getSites();
+
+        if (sites.size() == 0) {
+            System.out.println("Je hebt nog geen sites aangemaakt.\n");
+            return;
+        }
+
         int countSizeSite = 4;
         int countSizeUsername = 8;
         int countSizePassword = 8;
@@ -96,7 +116,11 @@ public class PasswordManager {
         String seperator = "+------+-" + "-".repeat(countSizeSite) + "-+-" + "-".repeat(countSizeUsername) + "-+-" + "-".repeat(countSizePassword) + "-+";
 
         System.out.println(seperator);
-        System.out.println("| ID   | " + formatString("Site", countSizeSite, maxSizeSite) + " | " + formatString("Username", countSizeUsername, maxSizeUsername) + " | " + formatString("Password", countSizePassword, maxSizePassword) + " |");
+        System.out.println("| ID   | " +
+                formatString("Site", countSizeSite, maxSizeSite) + " | " +
+                formatString("Username", countSizeUsername, maxSizeUsername) + " | " +
+                formatString("Password", countSizePassword, maxSizePassword) + " |"
+        );
         System.out.println(seperator);
 
         for (int i = 0; i < sites.size(); i++) {
@@ -110,6 +134,7 @@ public class PasswordManager {
         }
 
         System.out.println(seperator);
+        System.out.println("\n");
     }
 
     // Formatteer string tot max grootte en extra spaties
@@ -127,4 +152,5 @@ public class PasswordManager {
 
         return string;
     }
+
 }
