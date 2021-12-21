@@ -45,6 +45,11 @@ public class CreateSite {
                 continue;
             }
 
+            if (siteName.contains(" // ")) {
+                System.out.println("Geen geldige invoer, je mag geen ' // ' in je site naam hebben.");
+                continue;
+            }
+
             System.out.println("Wat is de gebruikersnaam die je hierbij wilt opslaan? ");
 
             if (!scanner.hasNextLine()) {
@@ -57,6 +62,11 @@ public class CreateSite {
 
             if (username.length() < 3) {
                 System.out.println("Geen geldige invoer, je moet meer dan 3 karakters invoeren.");
+                continue;
+            }
+
+            if (username.contains(" // ")) {
+                System.out.println("Geen geldige invoer, je mag geen ' // ' in je username hebben.");
                 continue;
             }
 
