@@ -70,14 +70,17 @@ public class FileHandler {
         return new Password(rawData, true);
     }
 
-    //Read the file and return a list of sites
+    // Lees het bestand en maak een lijst van alle sites
     public List<Site> readSites() {
         List<Site> list = new ArrayList<>();
         BufferedReader reader = null;
 
         try {
+            // BufferedReader om het bestand in te lezen
             reader = new BufferedReader(new FileReader(getPath()));
             String line;
+
+            // Wanneer de eerst volgende regel bestaan word dit bekeken en eventueel toegevoegd aan de lijst.
             while ((line = reader.readLine()) != null) {
                 if (line.startsWith("$pass / ")) continue;
 
