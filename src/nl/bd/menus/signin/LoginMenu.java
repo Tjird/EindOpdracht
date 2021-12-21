@@ -7,12 +7,19 @@ import nl.bd.util.FileHandler;
 import nl.bd.util.Password;
 import java.util.Scanner;
 
-public class Login {
+/**
+ * Deze class is voor het inloggen van een gebruiker.
+ * Deze class is een menu class.
+ * De input wordt gevalideerd en word gebruikt om te kijken of dit een bestaande gebruiker is en wachtwoord gelijk is.
+ * De gebruiker wordt dan ingelogd.
+ */
+
+public class LoginMenu {
 
     private String username = "";
     private Password password;
 
-    public Login() {
+    public LoginMenu() {
         int count = 0; // Aantal pogingen
         boolean stop = false;
         Scanner scanner = new Scanner(System.in);
@@ -22,10 +29,12 @@ public class Login {
             this.username = null;
             this.password = null;
 
+            // Optie om dit menu te beëindigen.
             if (count == 3) {
                 System.out.println("Het lijkt wel alsof het je niet lukt... Wil je terug? (j/n)");
                 String answer = scanner.nextLine();
 
+                // Bekijken of de input een item is in de yesList.
                 if (Menus.getYesList().contains(answer.toLowerCase())) {
                     stop = true;
                     continue;
@@ -95,10 +104,12 @@ public class Login {
         return fileHandler.getPassword() != null && fileHandler.getPassword().getEncodedString().equals(this.password.getEncodedString());
     }
 
+    // Haal de gebruikersnaam op
     public String getUsername() {
         return this.username;
     }
 
+    // Haal het wachtwoord op (Password class)
     public Password getPassword() {
         return this.password;
     }

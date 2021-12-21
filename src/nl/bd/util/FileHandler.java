@@ -7,6 +7,11 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Deze class is voor het lezen en schrijven van bestanden.
+ * De meest gebruikte methode is `updateFile(User user)`, dit wordt gebruikt input data in een bestand te schrijven.
+ */
+
 public class FileHandler {
 
     private final String userName;
@@ -29,6 +34,7 @@ public class FileHandler {
         }
     }
 
+    // Bekijk of het specifieke user bestand bestaat.
     public boolean checkIfUserFileExists() { return (new File(getPath())).exists(); }
 
     // Verkijg het wachtwoord van een user bestand
@@ -105,6 +111,7 @@ public class FileHandler {
         return "." + File.separator + userName + ".txt";
     }
 
+    // Creër een nieuwe user bestand met alleen het wachtwoord
     public void createUser(String encodedPassword) {
         createFile();
 

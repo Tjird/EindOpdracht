@@ -12,16 +12,20 @@ public class PasswordChange {
     public PasswordChange() {
         Scanner scanner = new Scanner(System.in);
 
-        int count = 0; // Aantal pogingen
+        int count = 0; // Aantal keren dat de gebruiker de input moet invoeren.
         boolean stop = false;
 
+        // Wanneer de gebruiker zelf aangeeft dat hij/zij wilt stoppen of als
+        // het correct is uitgevoerd wordt deze while loop gestopt, anders gaat deze door.
         while (!stop) {
             count++;
 
+            // Optie om dit menu te beëindigen.
             if (count == 3) {
                 System.out.println("Het lijkt wel alsof het je niet lukt... Wil je terug? (j/n)");
                 String answer = scanner.nextLine();
 
+                // Bekijken of de input een item is in de yesList.
                 if (Menus.getYesList().contains(answer.toLowerCase())) {
                     stop = true;
                     continue;
@@ -32,6 +36,8 @@ public class PasswordChange {
 
             // Vraag aan de gebruiker om zijn huidige wachtwoord
             System.out.print("Wat is je huidige wachtwoord? ");
+
+            // Valideer of er een volgende input is.
             if (!scanner.hasNextLine()) {
                 scanner.next();
                 System.out.println("Geen wachtwoord ingevuld...");

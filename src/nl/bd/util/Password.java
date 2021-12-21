@@ -2,6 +2,11 @@ package nl.bd.util;
 
 import java.util.Base64;
 
+/**
+ * Deze class is voor het wachtwoord van een site en gebruiker.
+ * Deze class bevat een methode om een wachtwoord te encoden en decoden in base64.
+ */
+
 public class Password {
 
     private String encodedString;
@@ -24,15 +29,6 @@ public class Password {
 
     private String encodePassword() {
         return Base64.getEncoder().encodeToString(this.decodedString.getBytes());
-    }
-
-    public String encodePassword(String s) {
-        return Base64.getEncoder().encodeToString(s.getBytes());
-    }
-
-    public void setPassword(String password) {
-        this.decodedString = password;
-        this.encodedString = encodePassword();
     }
 
     public String getEncodedString() { return this.encodedString; }

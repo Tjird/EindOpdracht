@@ -5,14 +5,22 @@ import nl.bd.menus.Menus;
 import nl.bd.util.FileHandler;
 import nl.bd.util.Password;
 
+/**
+ * Deze class is voor het creëren van een nieuwe gebruiker.
+ * Deze class is een menu class.
+ * De input wordt gevalideerd en word gebruikt om een nieuwe gebruiker aan te maken.
+ * Input wordt bekeken om te zien of de gebruiker al bestaat.
+ * De gebruiker wordt dan ingelogd na het creëren van de gebruiker.
+ */
+
 import java.util.Scanner;
 
-public class Register {
+public class RegisterMenu {
 
     private String username = null;
     private Password password;
 
-    public Register() {
+    public RegisterMenu() {
         int count = 0; // Aantal pogingen
         boolean stop = false;
         Scanner scanner = new Scanner(System.in);
@@ -22,10 +30,12 @@ public class Register {
             this.username = null;
             this.password = null;
 
+            // Optie om dit menu te beëindigen.
             if (count == 3) {
                 System.out.println("Het lijkt wel alsof het je niet lukt... Wil je terug? (j/n)");
                 String answer = scanner.nextLine();
 
+                // Bekijken of de input een item is in de yesList.
                 if (Menus.getYesList().contains(answer.toLowerCase())) {
                     stop = true;
                     continue;
@@ -99,8 +109,9 @@ public class Register {
                 continue;
             }
 
-            // Maak een nieuw account aan
+            // Maak een nieuw account aan met de doorgegeven username
             FileHandler fileHandler = new FileHandler(this.username);
+            // Voeg het wachtwoord toe aan het nog niet aangemaakte account en sla het op in een apart bestand
             fileHandler.createUser(this.password.getEncodedString());
 
             System.out.println("Account aangemaakt! Je kan nu inloggen.");
@@ -108,6 +119,7 @@ public class Register {
         }
     }
 
+    // Vergelijk de ingevoerde wachtwoorden
     private boolean comparePasswords(String password, String password2) {
         return password.equals(password2);
     }
@@ -119,10 +131,12 @@ public class Register {
         return fileHandler.checkIfUserFileExists();
     }
 
+    // Verkrijg de gebruikersnaam
     public String getUsername() {
         return this.username;
     }
 
+    // Verkrijg het Password object
     public Password getPassword() {
         return this.password;
     }

@@ -6,6 +6,12 @@ import nl.bd.util.Password;
 
 import java.util.List;
 
+/**
+ * Deze class is voor het User object dat gebruikt wordt om de gebruiker te
+ * registreren en in te loggen.
+ * Data van de user komt hier ook in te staan, dit gaat voornamelijk om de sites (List van sites).
+ */
+
 public class User {
 
     private final String username;
