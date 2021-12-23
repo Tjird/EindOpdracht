@@ -37,7 +37,7 @@ public class FileHandler {
     // Bekijk of het specifieke user bestand bestaat.
     public boolean checkIfUserFileExists() { return (new File(getPath())).exists(); }
 
-    // Verkijg het wachtwoord van een user bestand
+    // Verkrijg het wachtwoord van een user bestand
     public Password getPassword() {
         BufferedReader reader = null;
         String rawData = "";
@@ -114,7 +114,7 @@ public class FileHandler {
         return "." + File.separator + userName + ".txt";
     }
 
-    // Creër een nieuwe user bestand met alleen het wachtwoord
+    // Creëer een nieuwe user bestand met alleen het wachtwoord
     public void createUser(String encodedPassword) {
         createFile();
 

@@ -24,7 +24,7 @@ public class MainMenu {
         // Lees de gebruikers input en kijk of dit een getal is
         if (!input.hasNextInt()) {
             input.next();
-            System.out.println("Foutive invoer, probeer opnieuw...\n");
+            System.out.println("Foutieve invoer, probeer opnieuw...\n");
             return;
         }
 

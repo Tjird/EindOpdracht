@@ -54,7 +54,7 @@ public class LoginMenu {
 
             this.username = scanner.nextLine();
 
-            // Valideer de gebruikersnaam doormiddel van een reguliere expressie
+            // Valideer de gebruikersnaam door middel van een reguliere expressie
             if (User.checkUsername(username)) {
                 System.out.println("Gebruikersnaam is niet geldig...");
                 continue;
@@ -71,7 +71,7 @@ public class LoginMenu {
 
             String passwordRaw = scanner.nextLine();
 
-            // Valideer het wachtwoord doormiddel van een reguliere expressie
+            // Valideer het wachtwoord door middel van een reguliere expressie
             if (!Password.checkPassword(passwordRaw)) {
                 System.out.println("Wachtwoord is niet geldig...");
                 continue;
@@ -89,7 +89,6 @@ public class LoginMenu {
                 this.username = null;
                 this.password = null;
             }
-
 
         }
 
