@@ -1,0 +1,5 @@
+$pass / d2Vsa29tMDE=
+
+<site> // <gebruikersnaam> // <wachtwoord>
+novi.nl // admin // d2Vsa29tMDI=
+edhub.novi.nl // student // d2Vsa29tMDQ=
